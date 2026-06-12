@@ -2,6 +2,15 @@
 
 A full-stack task management app built with **NestJS + Prisma + SQLite** (backend) and **Vite + React 19 + shadcn/ui** (frontend).
 
+## Live Demo
+
+| | URL |
+|---|---|
+| 🌐 Frontend | [uitop-test-task-three.vercel.app](https://uitop-test-task-three.vercel.app/) |
+| ⚙️ Backend  | [uitop-test-task-gon3.onrender.com](https://uitop-test-task-gon3.onrender.com/) |
+
+> **Note:** The backend is hosted on Render's free tier and **spins down after inactivity**. The first request may take up to **50 seconds** to wake up — please wait a moment before using the app.
+
 ## Features
 
 - Create tasks with a text and a category
