@@ -1,0 +1,27 @@
+{
+	"name": "test-tasks",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"frontend": "pnpm --dir frontend dev",
+		"backend": "pnpm --dir backend start:dev",
+		"dev": "concurrently \"pnpm frontend\" \"pnpm backend\"",
+		"test": "concurrently \"pnpm --dir frontend test\" \"pnpm --dir backend test\"",
+		"install:all": "pnpm install && pnpm --dir frontend install && pnpm --dir backend install"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^11.5.2",
+			"onFail": "download"
+		}
+	},
+	"type": "module",
+	"devDependencies": {
+		"concurrently": "^9.0.0"
+	}
+}

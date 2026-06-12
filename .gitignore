@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.env
+
+# SQLite
+*.db
+*.db-journal
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Cursor agent skills cache
+.agents/
+skills-lock.json
+
+# OS
+.DS_Store
+Thumbs.db

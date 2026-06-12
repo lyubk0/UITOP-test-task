@@ -1,0 +1,24 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  todos Todo[]
+}
+
+model Todo {
+  id         Int      @id @default(autoincrement())
+  text       String
+  completed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+}
