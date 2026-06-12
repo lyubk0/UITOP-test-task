@@ -13,15 +13,15 @@ A full-stack task management app built with **NestJS + Prisma + SQLite** (backen
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
+| Layer    | Technology                                                 |
+| -------- | ---------------------------------------------------------- |
 | Frontend | Vite + React 19 + TypeScript + Tailwind CSS v4 + shadcn/ui |
-| Forms | react-hook-form |
-| HTTP | axios |
-| Toasts | react-hot-toast |
-| Backend | NestJS |
-| Database | SQLite via Prisma 7 |
-| Tests | Jest (backend) + Vitest + React Testing Library (frontend) |
+| Forms    | react-hook-form                                            |
+| HTTP     | axios                                                      |
+| Toasts   | react-hot-toast                                            |
+| Backend  | NestJS                                                     |
+| Database | SQLite via Prisma 7                                        |
+| Tests    | Jest (backend) + Vitest + React Testing Library (frontend) |
 
 ## Project Structure
 
@@ -51,6 +51,7 @@ pnpm install:all
 ### 2. Configure environment variables
 
 **Backend** (`backend/.env`):
+
 ```
 DATABASE_URL="file:./dev.db"
 FRONTEND_URL="http://localhost:5173"
@@ -58,6 +59,7 @@ PORT=3000
 ```
 
 **Frontend** (`frontend/.env`):
+
 ```
 VITE_API_URL=http://localhost:3000
 ```
@@ -99,13 +101,13 @@ pnpm test
 
 ## API Reference
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/categories` | List all categories |
-| `GET` | `/todos?category=Work` | List todos (optional category filter) |
-| `POST` | `/todos` | Create a todo `{ text, categoryId }` |
-| `PATCH` | `/todos/:id` | Update `{ completed: true/false }` |
-| `DELETE` | `/todos/:id` | Delete a todo |
+| Method   | Endpoint               | Description                           |
+| -------- | ---------------------- | ------------------------------------- |
+| `GET`    | `/categories`          | List all categories                   |
+| `GET`    | `/todos?category=Work` | List todos (optional category filter) |
+| `POST`   | `/todos`               | Create a todo `{ text, categoryId }`  |
+| `PATCH`  | `/todos/:id`           | Update `{ completed: true/false }`    |
+| `DELETE` | `/todos/:id`           | Delete a todo                         |
 
 **400 error**: `POST /todos` returns `{ message: "..." }` when the selected category already has 5 active tasks.
 
@@ -123,6 +125,7 @@ pnpm test
 SQLite writes to disk, so the host must support **persistent storage**.
 
 **Render:**
+
 1. Create a new **Web Service**, set root directory to `backend`.
 2. Build command: `pnpm install && pnpm exec prisma migrate deploy && pnpm exec prisma generate && pnpm build`
 3. Start command: `node dist/main`
@@ -137,11 +140,8 @@ SQLite writes to disk, so the host must support **persistent storage**.
 
 ### 1. Did you use AI at any stage while working on this task? Why?
 
-Yes. I used an AI coding assistant (Cursor) throughout the task. The primary reason was to accelerate the implementation of well-established patterns (NestJS module boilerplate, Prisma schema, React hook patterns) so I could focus mental energy on the non-trivial parts: the undo / grace-period flow, the 5-task business rule, and keeping the smart/dummy component boundary clean. AI is especially useful for catching TypeScript errors early and suggesting idiomatic code for libraries I use less frequently (e.g. Prisma 7's new `prisma-client` generator and `prisma.config.ts`).
+Yes, I used AI during the development process because it helps speed up routine work, validate ideas, and improve productivity. I still made the key technical decisions myself and reviewed the generated code before using it.
 
 ### 2. What kind of problems or uncertainties did AI help you resolve?
 
-- **Prisma 7 breaking changes**: Prisma 7 introduced a mandatory `prisma.config.ts`, a new `prisma-client` generator (replacing `prisma-client-js`), and the requirement to use a driver adapter (`@prisma/adapter-better-sqlite3`) for SQLite. The official docs exist but are scattered; AI synthesised them quickly.
-- **Tailwind v4 + shadcn/ui integration**: Tailwind v4 moved configuration from `tailwind.config.js` to CSS (`@theme inline`). AI helped write the correct `index.css` with the OKLCH-based zinc theme that shadcn components expect.
-- **Jest + ESM**: The Prisma 7 generated client uses `import.meta.url` (ESM), which Jest's CommonJS mode cannot parse. AI suggested using `jest.mock()` with a factory function to prevent Jest from loading the module's import chain, unblocking the unit tests.
-- **React-hot-toast JSX in `.ts` files**: Caught the error that a hook rendering JSX must use the `.tsx` extension.
+I used AI to help plan the basic project structure, clarify implementation details, and speed up the development of some frontend components and backend logic. I also used Vercel Skills, specifically `vercel-react-best-practices`, to check React-related patterns and follow better practices.

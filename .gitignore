@@ -12,6 +12,10 @@ dist/
 # Test coverage
 coverage/
 
+# Editor
+.vscode/
+.idea/
+
 # Cursor agent skills cache
 .agents/
 skills-lock.json
